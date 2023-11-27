@@ -19,20 +19,21 @@ public class Problema_01 {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         entrada.useLocale(Locale.US);
-        
+        // Variables
         String nombre;
         String posicion;
         String lista = "Listado de Jugadores";
         String acumulador = "";
-        int numero = 1;
+        int numero = 0;
         int edad;
         double edadTotal = 0;
         double estatura;
         double estaturaTotal = 0;
         String fin;
         boolean bandera = true;
-        
-        do{
+
+        // Estructura repetitiva
+        do {
             System.out.println("Ingrese el nombre del jugador");
             nombre = entrada.nextLine();
             System.out.println("Ingrese su posicion en el campo de juego");
@@ -41,38 +42,39 @@ public class Problema_01 {
             edad = entrada.nextInt();
             System.out.println("Ingrese su estatura");
             estatura = entrada.nextDouble();
+
+            numero = numero + 1;
             
             lista = String.format("\n%s\n%d. %s -%s-"
-                    + ", edad %d, estatura %.2f",lista,numero, nombre, 
+                    + ", edad %d, estatura %.2f", lista, numero
+                    , nombre,
                     posicion,
                     edad,
                     estatura);
-            acumulador = String.format("%s \n%d ",acumulador,
-                    edad );
-            
-            numero = numero + 1;
+            acumulador = String.format("%s \n%d ", acumulador,
+                    edad);
+
             edadTotal = edadTotal + edad;
             estaturaTotal = estaturaTotal + estatura;
-            
+
             entrada.nextLine();
             System.out.println("¿Desea terminar con la lista de jugadores?"
                     + "si es escriba (x)");
             fin = entrada.nextLine();
-            
-            if (fin.equals("x")){
+
+            if (fin.equals("x")) {
                 bandera = false;
             }
-    }while(bandera);
+        } while (bandera);
+        
+        // Lineas de codigo encargado de mostrar el resultado por pantalla
         edadTotal = edadTotal / numero;
         estaturaTotal = estaturaTotal / numero;
-        System.out.printf("%s",lista);
-        System.out.printf("\nListados de Edades %s \n",acumulador);
-        System.out.printf("Promedio de edades:  %.1f\n",edadTotal);
-        System.out.printf("Promedio de estaturas: %.2f \n",estaturaTotal);
+        System.out.printf("%s", lista);
+        System.out.printf("\nListados de Edades %s \n", acumulador);
+        System.out.printf("Promedio de edades:  %.1f\n", edadTotal);
+        System.out.printf("Promedio de estaturas: %.2f \n"
+                , estaturaTotal);
     }
-                
-                
-        
-    }
-    
 
+}
